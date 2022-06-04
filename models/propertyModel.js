@@ -1,7 +1,6 @@
 const moongoose = require("mongoose");
 const { Schema } = moongoose;
 
-
 const PropertySchema = new Schema({
     title: String,
     city: Number,
@@ -17,6 +16,7 @@ const PropertySchema = new Schema({
     value: Number,
     shortDescription: String,
     description: String,
+    status: Number
 }, {
     timestamps: true
 });
