@@ -26,7 +26,12 @@ const getAll = async (req, res) => {
 
 const getDetail = async (req, res) => {
   try {
-  } catch (error) {}
+      const id = req.params.id;
+      const { statusHttp, response } = await getProperty(id);
+      res.status(statusHttp).json(response);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 module.exports = {

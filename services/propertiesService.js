@@ -40,7 +40,14 @@ const buildQueryFilter = (filter) => {
 
 const getProperty = async (id) => {
   try {
-  } catch (error) {}
+    const preperty = PropertyModel.findById(id);
+    if (preperty) {
+      return responseOk({ preperty });
+    }
+    return responseError(404, "Property not found");
+  } catch (error) {
+    return responseError(500, "Server error");
+  }
 };
 
 module.exports = {
