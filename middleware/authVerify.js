@@ -6,7 +6,7 @@ const authVerify = (req, res, next) => {
         && req.headers.authorization.split(' ')[0] === 'Bearer') {
         const token = req.headers.authorization.split(' ')[1];
         try {
-            const decoded = jwt.verify(token, "millavesecreta");
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
             req.payload = decoded;
         } catch (error) {
             return res.status(401).send('Unauthorized');
