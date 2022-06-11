@@ -11,6 +11,7 @@
 Method | Endpoint | Data        | Auth Required
 ------ | -------- | ----------- | -------------
 `POST` | /user/login   | body: { email, password } | No
+`POST` | /user/info   |                             | Si
 
 
 ### Propiedades

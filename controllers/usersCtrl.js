@@ -12,7 +12,8 @@ const login = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const {id} = req.query; // const id = req.query.id
+    //const {id} = req.query; // const id = req.query.id
+    const {id} = req.payload;
     const { statusHttp, response } = await info(id);
     res.status(statusHttp).json(response);
   } catch (error) {
