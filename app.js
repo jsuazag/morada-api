@@ -4,6 +4,7 @@ require('./connection/mongoconn');
 require('dotenv').config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use('/static', express.static('public'));
 const port = 3001;
 
 const usersRoutes = require('./routes/users');
