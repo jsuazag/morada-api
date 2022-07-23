@@ -35,8 +35,29 @@ const getDetail = async (req, res) => {
   }
 };
 
+const uploadImage = (req, res) => {
+  if (!req.files) {
+    res.status(400).send('No files');
+  }
+
+  const propertyImage = req.files.propertyImage;
+  const nameSplited = propertyImage.name.split('.');
+  const ext = nameSplited[nameSplited.length - 1];
+  const newFileName = Math.floor(Date.now()) + '.' + ext;
+
+  const path = __dirname + '/../public/' + newFileName;
+
+  propertyImage.mv(path, (err) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.json({ fileName: newFileName });
+  });
+}
+
 module.exports = {
   create,
   getAll,
   getDetail,
+  uploadImage
 };
